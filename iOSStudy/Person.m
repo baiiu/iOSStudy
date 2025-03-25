@@ -49,8 +49,7 @@
     NSLog(@"dealloc");
 }
 
-
-
+// come from Protocol
 -(void) eat{
     NSLog(@"eat");
 }
@@ -61,6 +60,5 @@
 -(void) sleep{
     NSLog(@"sleep");
 }
-
 
 @end

@@ -8,6 +8,8 @@
 #import "ViewController.h"
 #import "Person.h"
 #import "Person+Setting.h"
+#import "Person+Location.h"
+
 
 @interface ViewController ()
 
@@ -49,11 +51,16 @@
     
     Person *p2 = [[Person alloc]initWithNameAge:@"Tom":20];
     [p2 updateAge:21];
+    [p2 resetSex:true];
     NSLog(@"p2: %@", p2);
     
     [p2 eat];
     [p2 drink];
     [p2 sleep];
+    
+    // extension私有，无法调用
+//    [p2 updateLocation:@"some where"];
+//    NSLog(@"location: %@, %@",p2, [p2 getLocation]);
 }
 
 

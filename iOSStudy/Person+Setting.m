@@ -13,5 +13,9 @@
     self.age = age;
 }
 
+-(void)resetSex:(BOOL)sex{
+    self.sex = sex;
+}
+
 
 @end
