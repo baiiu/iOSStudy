@@ -42,7 +42,7 @@
 }
 
 -(NSString*) description{
-    return [NSString stringWithFormat:@"Person: %@, %d", self.name, self.age];
+    return [NSString stringWithFormat:@"Person: %@, %d, %d", self.name, self.age, self.sex];
 }
 
 -(void) dealloc{

@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "Person.h"
+#import "Person+Setting.h"
 
 @interface ViewController ()
 
@@ -47,6 +48,7 @@
     NSLog(@"older: %d, %@", older, p);
     
     Person *p2 = [[Person alloc]initWithNameAge:@"Tom":20];
+    [p2 updateAge:21];
     NSLog(@"p2: %@", p2);
     
 }
