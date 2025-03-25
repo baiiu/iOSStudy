@@ -51,6 +51,9 @@
     [p2 updateAge:21];
     NSLog(@"p2: %@", p2);
     
+    [p2 eat];
+    [p2 drink];
+    [p2 sleep];
 }
 
 

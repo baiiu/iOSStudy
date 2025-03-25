@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IBehavior.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Person : NSObject
+@interface Person : NSObject<IBehavior>
 
 @property NSString *name;
 @property BOOL sex;

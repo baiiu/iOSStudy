@@ -51,4 +51,16 @@
 
 
 
+-(void) eat{
+    NSLog(@"eat");
+}
+
+-(void) drink{
+    NSLog(@"drink");
+}
+-(void) sleep{
+    NSLog(@"sleep");
+}
+
+
 @end
