@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "Person.h"
 
 @interface ViewController ()
 
@@ -34,7 +35,23 @@
                                               green:arc4random()%255/255.0
                                               blue:arc4random()%255/255.0
                                               alpha:1];
+    
+    Person *p = [Person new];
+    [p print];
+    [p setNameAge:@"Alex" age:20];
+    [p print];
+    
+    Person *p1 = [[Person alloc] init];
+    p1.age = 10;
+    int older = [p1 compare:p];
+    NSLog(@"older: %d, %@", older, p);
+    
+    Person *p2 = [[Person alloc]initWithNameAge:@"Tom":20];
+    NSLog(@"p2: %@", p2);
+    
 }
+
+
 
 
 @end
