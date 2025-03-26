@@ -41,6 +41,15 @@
     return self.age > other.age;
 }
 
+-(void) sayHello{
+    NSLog(@"%@ sayHello", self.name);
+    
+    if ([self.delegate respondsToSelector:@selector(personDidSayHello)]) {
+        [self.delegate personDidSayHello];
+    }
+    
+}
+
 -(NSString*) description{
     return [NSString stringWithFormat:@"Person: %@, %d, %d", self.name, self.age, self.sex];
 }
@@ -60,5 +69,6 @@
 -(void) sleep{
     NSLog(@"sleep");
 }
+
 
 @end

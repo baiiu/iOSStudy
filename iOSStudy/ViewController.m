@@ -58,11 +58,17 @@
     [p2 drink];
     [p2 sleep];
     
+    p2.delegate = self;
+    [p2 sayHello];
     // extension私有，无法调用
 //    [p2 updateLocation:@"some where"];
 //    NSLog(@"location: %@, %@",p2, [p2 getLocation]);
 }
 
+
+-(void)personDidSayHello{
+    NSLog(@"personDidSayHello");
+}
 
 
 
