@@ -71,4 +71,14 @@
 }
 
 
+-(void) configAddOperator:(MethOperatorBlock) block{
+    self.addition = block;
+}
+-(int) testAddition:(int) a: (int) b{
+    if (self.addition == nil) {
+        return -1;
+    }
+    return self.addition(a, b);
+}
+
 @end

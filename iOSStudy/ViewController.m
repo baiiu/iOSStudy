@@ -36,7 +36,7 @@
 -(void)changeColor{
     self.view.backgroundColor=[UIColor colorWithRed:arc4random()%255/255.0
                                               green:arc4random()%255/255.0
-                                              blue:arc4random()%255/255.0
+                                               blue:arc4random()%255/255.0
                                               alpha:1];
     
     Person *p = [Person new];
@@ -61,8 +61,21 @@
     p2.delegate = self;
     [p2 sayHello];
     // extension私有，无法调用
-//    [p2 updateLocation:@"some where"];
-//    NSLog(@"location: %@, %@",p2, [p2 getLocation]);
+    //    [p2 updateLocation:@"some where"];
+    //    NSLog(@"location: %@, %@",p2, [p2 getLocation]);
+    
+    simpleBlock block = ^(){
+        NSLog(@"this is simpleBlock");
+    };
+    MethOperatorBlock addition = ^(int a, int b) {
+        return a + b;
+    };
+    block();
+    NSLog(@"addtion: %d", addition(1,1));
+    
+    [p2 configAddOperator:addition];
+    NSLog(@"p2 testAddition: %d", [p2 testAddition:1 :1]);
+    
 }
 
 

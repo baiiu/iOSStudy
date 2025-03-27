@@ -18,12 +18,26 @@ NS_ASSUME_NONNULL_BEGIN
 @property int age;
 @property (nonatomic,weak) id<PersonDelegate> delegate;
 
+
 -(id)initWithNameAge:(NSString*) name: (int) age;
 -(void)print;
 -(void)setNameAge:(NSString*) name age:(int)age;
 -(int)compare:(Person*) other;
 
 -(void) sayHello;
+
+// block
+
+typedef void (^simpleBlock)(void);
+
+typedef int (^MethOperatorBlock)(int, int);
+@property(atomic, copy, nullable) MethOperatorBlock addition;
+
+typedef NSString* (^FetchRequest)(Person*, NSString*);
+@property(atomic, copy, nullable) FetchRequest request;
+
+-(void) configAddOperator:(MethOperatorBlock) block;
+-(int) testAddition:(int) a: (int) b;
 
 @end
 
