@@ -117,6 +117,19 @@ Person *p_global;
     [p2 updateAge:22];
     
     
+    [NSNotificationCenter.defaultCenter
+        addObserver:self
+     selector:@selector(handleGreetingNotification:)
+        name:@"GreetingNotification"
+        object:nil];
+    
+    NSNotification* noti = [[NSNotification alloc]initWithName:@"GreetingNotification" object:nil userInfo:nil];
+    [NSNotificationCenter.defaultCenter postNotification:noti];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"GreetingNotification" object:nil];
+    NSDictionary *userInfo = @{@"message": @"Hello, World!"};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"GreetingNotification" object:nil userInfo:userInfo];
+
+    
     SEL selector1 = @selector(personDidSayHello);
     SEL selector2 = NSSelectorFromString(@"personDidSayHello");
     NSLog(@"###selector1: %d, selector2: %d", selector1, selector2);
@@ -190,9 +203,19 @@ Person *p_global;
 }
 
 
+-(void)handleGreetingNotification:(NSNotification*)notification {
+    NSLog(@"handleGreetingNotification: %@", notification.name);
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *message = userInfo[@"message"];
+    NSLog(@"Received greeting: %@", message);
+}
+
+
 -(void)dealloc {
     [p_global removeObserver:self forKeyPath:NSStringFromSelector(@selector(age))];
     [p_global removeObserver:self forKeyPath:NSStringFromSelector(@selector(name))];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 
