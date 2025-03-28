@@ -7,7 +7,23 @@
 
 #import "Person.h"
 
-@implementation Person
+@implementation Person {
+    int _age;
+    __weak _Nullable id<IObserver> _observer;
+}
+@dynamic age;  // 告诉编译器我们将手动提供getter和setter方法
+
+- (void)setAge:(int)age{
+    NSLog(@"setAge: %d", age);
+    if (_observer != nil) {
+        [_observer onAgeUpdated:_age:age];
+    }
+    _age = age;
+}
+- (int) age {
+    NSLog(@"getAge: %d", _age);
+    return _age;
+}
 
 -(id)init{
     self = [super init];
@@ -34,6 +50,9 @@
 
 -(void)setNameAge:(NSString*) name age:(int)age{
     self.name = name;
+    if (_observer != nil) {
+        [_observer onAgeUpdated:self.age :age];
+    }
     self.age = age;
 }
 
@@ -79,6 +98,12 @@
         return -1;
     }
     return self.addition(a, b);
+}
+
+
+
+-(void) setObserver:(_Nullable id<IObserver>) observer{
+    _observer = observer;
 }
 
 @end

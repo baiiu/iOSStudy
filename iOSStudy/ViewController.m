@@ -61,7 +61,10 @@
     NSLog(@"older: %d, %@", older, p);
     
     Person *p2 = [[Person alloc]initWithNameAge:@"Tom":20];
+    [p2 setObserver:self];
     [p2 updateAge:21];
+    [p2 setAge:22];
+    [p2 setNameAge:@"Anna" age:23];
     [p2 resetSex:true];
     NSLog(@"p2: %@", p2);
     
@@ -89,6 +92,20 @@
     
 }
 
+
+#pragma mark PersonDelegate
+-(void)personDidSayHello {
+    NSLog(@"personDidSayHello");
+}
+
+#pragma mark IObserver
+-(void)onAgeUpdated:(int) newAge:(int) oldAge{
+    NSLog(@"onAgeUpdated: %d, %d", newAge, oldAge);
+}
+
+
+
+#pragma mark test
 Person *p_global;
 
 -(void) test {
@@ -118,11 +135,6 @@ Person *p_global;
     [p_global removeObserver:self forKeyPath:NSStringFromSelector(@selector(name))];
 }
 
-
-#pragma mark PersonDelegate
--(void)personDidSayHello {
-    NSLog(@"personDidSayHello");
-}
 
 
 @end

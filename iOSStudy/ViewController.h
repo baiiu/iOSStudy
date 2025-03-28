@@ -7,8 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PersonDelegate.h"
+#import "IObserver.h"
 
-@interface ViewController : UIViewController<PersonDelegate>
+@interface ViewController : UIViewController<PersonDelegate,IObserver>
 
 
 @end

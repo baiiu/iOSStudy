@@ -8,10 +8,13 @@
 #import <Foundation/Foundation.h>
 #import "IBehavior.h"
 #import "PersonDelegate.h"
+#import "IObserver.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Person : NSObject<IBehavior>
+
+@property (nonatomic, strong) NSString *currentItem;
 
 @property NSString *name;
 @property BOOL sex;
@@ -27,7 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) sayHello;
 
 // block
-
 typedef void (^simpleBlock)(void);
 
 typedef int (^MethOperatorBlock)(int, int);
@@ -38,6 +40,10 @@ typedef NSString* (^FetchRequest)(Person*, NSString*);
 
 -(void) configAddOperator:(MethOperatorBlock) block;
 -(int) testAddition:(int) a: (int) b;
+
+
+// id
+-(void) setObserver:(_Nullable id<IObserver>) observer;
 
 @end
 
