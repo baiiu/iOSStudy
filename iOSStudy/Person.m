@@ -16,7 +16,7 @@
 - (void)setAge:(int)age{
     NSLog(@"setAge: %d", age);
     if (_observer != nil) {
-        [_observer onAgeUpdated:_age:age];
+        [_observer onAgeUpdated:_age oldAge:age];
     }
     _age = age;
 }
@@ -35,7 +35,7 @@
     return self;
 }
 
--(id)initWithNameAge:(NSString*) name: (int)age{
+-(id)initWithNameAge:(NSString*) name age:(int)age{
     self = [super init];
     if (self != nil) {
         self.name = name;
@@ -51,7 +51,7 @@
 -(void)setNameAge:(NSString*) name age:(int)age{
     self.name = name;
     if (_observer != nil) {
-        [_observer onAgeUpdated:self.age :age];
+        [_observer onAgeUpdated:self.age oldAge:age];
     }
     self.age = age;
 }

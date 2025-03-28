@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol IObserver <NSObject>
 
--(void)onAgeUpdated:(int) newAge:(int) oldAge;
+-(void)onAgeUpdated:(int)newAge oldAge:(int) oldAge;
 
 @end
 
