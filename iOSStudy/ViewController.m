@@ -9,13 +9,17 @@
 #import "Person.h"
 #import "Person+Setting.h"
 #import "Person+Location.h"
-
+#import "Util.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
++(void)load {
+    DoMethodSwizzling(self.class, @selector(test_gcd), @selector(hook_test_gcd));
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -259,13 +263,20 @@ Person *p_global;
     // 获取当前线程对象
     NSThread *currentThread = [NSThread currentThread];
     NSDate *currentDate = [NSDate date];
-
+    
     // 打印线程的标识符
     NSLog(@"%@ Thread ID: %@, %@", currentDate, currentThread, logStr);
 }
 
+-(void) hook_test_gcd {
+    [self hook_test_gcd]; // 调回原方法
+    [self printCurrentThreadID:@"hook_test_gcd"];
+    [self hook_test_gcd]; // 调回原方法
+}
+
 -(void) test_gcd {
     [self printCurrentThreadID:@"test_gcd"];
+    
     
     dispatch_queue_t main_queue = dispatch_get_main_queue();
     dispatch_async(main_queue, ^{
